@@ -725,6 +725,11 @@ body.underground-mode {
   animation: wickedPulse 2.2s infinite ease-in-out;
 }
 
+#menuButton {
+    position: relative;
+    z-index: 10;
+}
+
 /* Neon spray arc */
 .wicked-emblem::before {
   content: "";
@@ -851,4 +856,141 @@ body {
     radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 0, transparent 45%);
   opacity: 0.25;
 }
+
+/* --------------------------------------------------
+   MAIN LOGO
+-------------------------------------------------- */
+
+.main-logo {
+    width: 400px;      /* slightly bigger */
+    height: auto;
+    display: block;
+    margin-left: 75px; /* nudges it to the right */
+    z-index: 1;
+    position: relative;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-logo {
+    position: relative;
+    z-index: 1;
+}
+
+#wickedShineBtn {
+    position: relative;
+    z-index: 10;
+}
+.hero .diamond-rain {
+  position: absolute;
+  right: 0;
+  bottom: 5%;          /* lift slightly above the section bottom */
+  width: 60vw;         /* stretch across toward the text */
+  max-width: none;
+  object-fit: contain;
+  z-index: 3;
+  pointer-events: none; /* keeps it non‑interactive */
+}
+.wicked-image {
+  position: absolute;
+  right: -105%;          /* pushes the image further right */
+  bottom: -38%;           /* keeps it slightly above the section bottom */
+  width: 100vw;          /* stretches it wider across the screen */
+  max-width: none;
+  object-fit: contain;
+  z-index: 3;
+  pointer-events: none;
+}
+/* Center all content-section H2s and their red underline */
+.content-section h2 {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Red underline, locked to the text center */
+.content-section h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -0.4rem;      /* adjust up/down as you like */
+  width: 60px;          /* length of the red line */
+  height: 3px;
+  background: #ff2a2a;  /* your red */
+}
+.split-text h2 {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Red underline for "Shine for the Fam." */
+.split-text h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -0.4rem;      /* tweak up/down if needed */
+  width: 60px;          /* length of the red line */
+  height: 3px;
+  background: #ff2a2a;
+}
+/* Diamond Rain Container */
+.diamond-rain-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Wrapper that rotates + falls */
+.diamond-wrapper {
+  position: absolute;
+  animation: fallAndSpin var(--duration) linear var(--delay) infinite,
+             sparkle 2s ease-in-out infinite;
+}
+
+/* TRUE GEM SHAPE */
+.diamond {
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #b8eaff 40%, #7ddfff 100%);
+  clip-path: polygon(
+    20% 35%,
+    35% 10%,
+    65% 10%,
+    80% 35%,
+    100% 60%,
+    50% 100%,
+    0% 60%
+  );
+  filter: drop-shadow(0 0 4px rgba(125, 223, 255, 0.6));
+  opacity: 0.9;
+}
+
+/* Combined falling + spinning */
+@keyframes fallAndSpin {
+  0% {
+    transform: translateY(-120px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Sparkle */
+@keyframes sparkle {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+}
+
 

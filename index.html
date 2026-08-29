@@ -17,10 +17,14 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="images/favicon.png.png" loading="lazy">
+
 </head>
 
 <body class="theme-dark">
+
+  <!-- Hidden Wicked Shine Trigger -->
+  <button id="wickedShineBtn" style="display:none;"></button>
 
   <!-- Wicked Shine Panel -->
   <div class="wicked-panel" id="wickedPanel">
@@ -59,6 +63,9 @@
 
     <!-- Hero -->
     <section class="hero hero-comic fade-in">
+    <div class="diamond-rain-container"></div>
+
+      
       <div class="hero-inner">
 
         <div class="hero-content">
@@ -70,32 +77,23 @@
 
           <div class="hero-buttons">
             <a href="contact.html" class="btn-primary btn-glow">Book a Detail</a>
-            <button class="btn-primary btn-wicked" id="wickedShineBtn">Diamond Rain Package</button>
+
+            <!-- FIXED: renamed button -->
+            <button class="btn-primary btn-wicked" id="wickedShineTrigger">
+              Diamond Rain Package
+            </button>
+
           </div>
         </div>
 
         <div class="hero-illustration">
+  <!-- Comic Car -->
+  <img src="images/710DetailCo_logo.png" class="main-logo">
 
-          <!-- Comic Car -->
-          <div class="comic-car">
-            <div class="car-body"></div>
-            <div class="car-window"></div>
-            <div class="car-wheel car-wheel-left"></div>
-            <div class="car-wheel car-wheel-right"></div>
+  <!-- Wicked Emblem -->
+  <div class="wicked-emblem" id="wickedEmblem"></div>
+</div>
 
-            <div class="washer-character">
-              <div class="char-head"></div>
-              <div class="char-body"></div>
-              <div class="char-arm"></div>
-              <div class="char-wand"></div>
-              <div class="spray-arc"></div>
-            </div>
-          </div>
-
-          <!-- Wicked Emblem -->
-          <div class="wicked-emblem" id="wickedEmblem"></div>
-
-        </div>
       </div>
 
       <div class="confetti-layer"></div>

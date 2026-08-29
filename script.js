@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.getElementById("navLinks");
   const logoTap = document.getElementById("logoTap");
   const easterEgg = document.getElementById("easterEgg");
-  const wickedShineBtn = document.getElementById("wickedShineBtn");
   const famDiscountBtn = document.getElementById("famDiscountBtn");
 
   /* -----------------------------
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ----------------------------- */
   if (famDiscountBtn) {
     famDiscountBtn.addEventListener("click", () => {
-      alert("Fam Discount:\nReturning customers get a loyalty rate — because we treat every customer like fam.");
+      window.location.href = "gallery.html";
     });
   }
 
@@ -70,220 +69,277 @@ document.addEventListener("DOMContentLoaded", () => {
   faders.forEach((el) => appear.observe(el));
 
   /* -------------------------------------------------------------
-     Wicked Shine Mode — Panel + Neon Emblem + Car Swap
+     Wicked Shine Mode — Panel + Diamond Rain
   ------------------------------------------------------------- */
   const wickedPanel = document.getElementById("wickedPanel");
   const wickedOverlay = document.getElementById("wickedOverlay");
-  const comicCar = document.querySelector(".comic-car");
+  const comicCar = document.querySelector(".main-logo");
   const wickedEmblem = document.getElementById("wickedEmblem");
+  const wickedShineBtn = document.getElementById("wickedShineBtn");
+  const wickedShineTrigger = document.getElementById("wickedShineTrigger");
 
-  if (wickedShineBtn && wickedPanel && wickedOverlay && comicCar && wickedEmblem) {
+  // Connect visible button → hidden button
+  if (wickedShineTrigger && wickedShineBtn) {
+    wickedShineTrigger.addEventListener("click", () => {
+      wickedShineBtn.click();
+    });
+  }
+
+  /* -------------------------------------------------------------
+     DIAMOND RAIN — Only when Wicked Shine is pressed
+  ------------------------------------------------------------- */
+
+  function startDiamondRain() {
+    const container = document.querySelector('.diamond-rain-container');
+    if (!container) return;
+
+    container.innerHTML = ""; // clear old diamonds
+
+    for (let i = 0; i < 25; i++) {
+      const wrap = document.createElement('div');
+      wrap.classList.add('diamond-wrapper');
+
+      wrap.style.left = Math.random() * 100 + 'vw';
+      wrap.style.top = Math.random() * -300 + 'px';
+
+      wrap.style.setProperty('--delay', Math.random() * 3 + 's');
+      wrap.style.setProperty('--duration', 3 + Math.random() * 3 + 's');
+
+      const d = document.createElement('div');
+      d.classList.add('diamond');
+
+      wrap.appendChild(d);
+      container.appendChild(wrap);
+    }
+  }
+
+  function stopDiamondRain() {
+    const container = document.querySelector('.diamond-rain-container');
+    if (container) container.innerHTML = "";
+  }
+
+  /* -------------------------------------------------------------
+     Wicked Shine Button Logic
+  ------------------------------------------------------------- */
+  if (wickedShineBtn && wickedPanel && wickedOverlay && comicCar) {
     wickedShineBtn.addEventListener("click", () => {
-      // Show slide-out panel
+
       wickedPanel.classList.add("open");
       wickedOverlay.classList.add("show");
 
-      // Swap car → neon emblem
-      comicCar.style.display = "none";
-      wickedEmblem.style.display = "block";
+      // KEEP MAIN LOGO VISIBLE
+      comicCar.style.display = "block";
+      wickedEmblem.style.display = "none";
 
-      // Wicked Shine background
       document.body.classList.add("wicked-shine-mode");
 
-      // Auto-revert after 10 seconds
+      // START DIAMOND RAIN
+      startDiamondRain();
+
       setTimeout(() => {
         wickedPanel.classList.remove("open");
         wickedOverlay.classList.remove("show");
 
+        // Logo stays visible
         wickedEmblem.style.display = "none";
-        comicCar.style.display = "block";
 
         document.body.classList.remove("wicked-shine-mode");
+
+        // STOP DIAMOND RAIN
+        stopDiamondRain();
+
       }, 10000);
     });
 
-    // Close panel manually
     wickedOverlay.addEventListener("click", () => {
       wickedPanel.classList.remove("open");
       wickedOverlay.classList.remove("show");
     });
   }
-});
 
-/* -------------------------------------------------------------
-   ADDITIONAL EASTER EGGS
-------------------------------------------------------------- */
+  /* -------------------------------------------------------------
+     Faygo Splash — 5 clicks
+  ------------------------------------------------------------- */
+  let faygoClickCount = 0;
 
-/* Faygo splash — Wicked Shine button (5 clicks) */
-let wickedClickCount = 0;
-const wickedShineBtnGlobal = document.getElementById("wickedShineBtn");
-if (wickedShineBtnGlobal) {
-  wickedShineBtnGlobal.addEventListener("click", () => {
-    wickedClickCount++;
-    if (wickedClickCount === 5) {
-      wickedClickCount = 0;
-      wickedShineBtnGlobal.classList.add("faygo-splash");
-      setTimeout(() => wickedShineBtnGlobal.classList.remove("faygo-splash"), 600);
-    }
-  });
-}
+  if (wickedShineTrigger) {
+    wickedShineTrigger.addEventListener("click", () => {
+      faygoClickCount++;
 
-/* Graffiti hover tags — wrap target words */
-const graffitiWords = ["wicked", "fam", "shine", "underground"];
+      if (faygoClickCount === 5) {
+        faygoClickCount = 0;
 
-function tagGraffitiWords(node) {
-  if (node.nodeType !== Node.TEXT_NODE) return;
-  const text = node.textContent;
-  let replaced = text;
+        wickedShineTrigger.classList.add("faygo-splash");
 
-  graffitiWords.forEach((word) => {
-    const regex = new RegExp(`\\b(${word})\\b`, "gi");
-    replaced = replaced.replace(regex, '<span class="tagged-word">$1</span>');
-  });
-
-  if (replaced !== text) {
-    const span = document.createElement("span");
-    span.innerHTML = replaced;
-    node.parentNode.replaceChild(span, node);
+        setTimeout(() => {
+          wickedShineTrigger.classList.remove("faygo-splash");
+        }, 600);
+      }
+    });
   }
-}
 
-function walkNodes(root) {
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
-  let node;
-  while ((node = walker.nextNode())) tagGraffitiWords(node);
-}
+  /* -------------------------------------------------------------
+     Graffiti Word Tagging
+  ------------------------------------------------------------- */
+  const graffitiWords = ["wicked", "fam", "shine", "underground"];
 
-walkNodes(document.body);
+  function tagGraffitiWords(node) {
+    if (node.nodeType !== Node.TEXT_NODE) return;
+    const text = node.textContent;
+    let replaced = text;
 
-/* Konami Code — Wicked Mode */
-const konamiSequence = [
-  "ArrowUp","ArrowUp","ArrowDown","ArrowDown",
-  "ArrowLeft","ArrowRight","ArrowLeft","ArrowRight",
-  "KeyB","KeyA"
-];
-let konamiIndex = 0;
+    graffitiWords.forEach((word) => {
+      const regex = new RegExp(`\\b(${word})\\b`, "gi");
+      replaced = replaced.replace(regex, '<span class="tagged-word">$1</span>');
+    });
 
-function activateKonamiMode() {
-  document.body.classList.add("konami-mode");
-  const badge = document.createElement("div");
-  badge.className = "wicked-badge";
-  badge.textContent = "Wicked Mode Activated";
-  document.body.appendChild(badge);
-  setTimeout(() => {
-    document.body.classList.remove("konami-mode");
-    badge.remove();
-  }, 10000);
-}
+    if (replaced !== text) {
+      const span = document.createElement("span");
+      span.innerHTML = replaced;
+      node.parentNode.replaceChild(span, node);
+    }
+  }
 
-document.addEventListener("keydown", (e) => {
-  if (e.code === konamiSequence[konamiIndex]) {
-    konamiIndex++;
-    if (konamiIndex === konamiSequence.length) {
+  function walkNodes(root) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    let node;
+    while ((node = walker.nextNode())) tagGraffitiWords(node);
+  }
+
+  walkNodes(document.body);
+
+  /* -------------------------------------------------------------
+     Konami Code — Wicked Mode
+  ------------------------------------------------------------- */
+  const konamiSequence = [
+    "ArrowUp","ArrowUp","ArrowDown","ArrowDown",
+    "ArrowLeft","ArrowRight","ArrowLeft","ArrowRight",
+    "KeyB","KeyA"
+  ];
+  let konamiIndex = 0;
+
+  function activateKonamiMode() {
+    document.body.classList.add("konami-mode");
+    const badge = document.createElement("div");
+    badge.className = "wicked-badge";
+    badge.textContent = "Wicked Mode Activated";
+    document.body.appendChild(badge);
+    setTimeout(() => {
+      document.body.classList.remove("konami-mode");
+      badge.remove();
+    }, 10000);
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.code === konamiSequence[konamiIndex]) {
+      konamiIndex++;
+      if (konamiIndex === konamiSequence.length) {
+        konamiIndex = 0;
+        activateKonamiMode();
+      }
+    } else {
       konamiIndex = 0;
-      activateKonamiMode();
-    }
-  } else {
-    konamiIndex = 0;
-  }
-});
-
-/* Secret Page Unlock — Footer 7 clicks */
-let footerClickCount = 0;
-const footer = document.querySelector(".site-footer");
-if (footer) {
-  footer.addEventListener("click", () => {
-    footerClickCount++;
-    if (footerClickCount >= 7) {
-      footerClickCount = 0;
-      window.location.href = "fam.html";
     }
   });
-}
 
-/* Dark Carnival Ambient Mode — Logo long press */
-let carnivalTimer = null;
-const logoTapGlobal = document.getElementById("logoTap");
-if (logoTapGlobal) {
-  logoTapGlobal.addEventListener("mousedown", () => {
-    carnivalTimer = setTimeout(() => {
-      document.body.classList.add("carnival-mode");
-      setTimeout(() => document.body.classList.remove("carnival-mode"), 12000);
-    }, 3000);
+  /* -------------------------------------------------------------
+     Footer Secret Page — 7 clicks
+  ------------------------------------------------------------- */
+  let footerClickCount = 0;
+  const footer = document.querySelector(".site-footer");
+  if (footer) {
+    footer.addEventListener("click", () => {
+      footerClickCount++;
+      if (footerClickCount >= 7) {
+        footerClickCount = 0;
+        window.location.href = "fam.html";
+      }
+    });
+  }
+
+  /* -------------------------------------------------------------
+     Dark Carnival Mode — Logo long press
+  ------------------------------------------------------------- */
+  let carnivalTimer = null;
+  const logoTapGlobal = document.getElementById("logoTap");
+
+  if (logoTapGlobal) {
+    logoTapGlobal.addEventListener("mousedown", () => {
+      carnivalTimer = setTimeout(() => {
+        document.body.classList.add("carnival-mode");
+        setTimeout(() => document.body.classList.remove("carnival-mode"), 12000);
+      }, 3000);
+    });
+
+    const cancelCarnival = () => {
+      if (carnivalTimer) {
+        clearTimeout(carnivalTimer);
+        carnivalTimer = null;
+      }
+    };
+
+    logoTapGlobal.addEventListener("mouseup", cancelCarnival);
+    logoTapGlobal.addEventListener("mouseleave", cancelCarnival);
+    logoTapGlobal.addEventListener("touchend", cancelCarnival);
+    logoTapGlobal.addEventListener("touchcancel", cancelCarnival);
+  }
+
+  /* -------------------------------------------------------------
+     Detailer's Wisdom Tips — Scroll bottom 5×
+  ------------------------------------------------------------- */
+  let bottomScrollCount = 0;
+  const wisdomTips = [
+    "Microfiber > everything.",
+    "Two-bucket method prevents swirl marks.",
+    "Clay bar before wax = wicked shine.",
+    "Vacuum first, wipe second.",
+    "Tire shine last — avoid splashback."
+  ];
+
+  function showWisdomTip() {
+    const tip = document.createElement("div");
+    tip.className = "wisdom-tip";
+    tip.textContent = wisdomTips[Math.floor(Math.random() * wisdomTips.length)];
+    document.body.appendChild(tip);
+    setTimeout(() => tip.remove(), 4000);
+  }
+
+  window.addEventListener("scroll", () => {
+    const bottomReached =
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
+
+    if (bottomReached) {
+      bottomScrollCount++;
+      if (bottomScrollCount >= 5) {
+        bottomScrollCount = 0;
+        showWisdomTip();
+      }
+    }
   });
 
-  const cancelCarnival = () => {
-    if (carnivalTimer) {
-      clearTimeout(carnivalTimer);
-      carnivalTimer = null;
-    }
-  };
+  /* -------------------------------------------------------------
+     Underground Mode — U + N + D
+  ------------------------------------------------------------- */
+  const undergroundKeys = new Set();
 
-  logoTapGlobal.addEventListener("mouseup", cancelCarnival);
-  logoTapGlobal.addEventListener("mouseleave", cancelCarnival);
-  logoTapGlobal.addEventListener("touchend", cancelCarnival);
-  logoTapGlobal.addEventListener("touchcancel", cancelCarnival);
-}
-
-/* Detailer's Wisdom Tips — Scroll bottom 5× */
-let bottomScrollCount = 0;
-const wisdomTips = [
-  "Microfiber > everything.",
-  "Two-bucket method prevents swirl marks.",
-  "Clay bar before wax = wicked shine.",
-  "Vacuum first, wipe second.",
-  "Tire shine last — avoid splashback."
-];
-
-function showWisdomTip() {
-  const tip = document.createElement("div");
-  tip.className = "wisdom-tip";
-  tip.textContent = wisdomTips[Math.floor(Math.random() * wisdomTips.length)];
-  document.body.appendChild(tip);
-  setTimeout(() => tip.remove(), 4000);
-}
-
-window.addEventListener("scroll", () => {
-  const bottomReached =
-    window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
-
-  if (bottomReached) {
-    bottomScrollCount++;
-    if (bottomScrollCount >= 5) {
-      bottomScrollCount = 0;
-      showWisdomTip();
-    }
+  function activateUndergroundMode() {
+    document.body.classList.add("underground-mode");
+    setTimeout(() => document.body.classList.remove("underground-mode"), 8000);
   }
+
+  document.addEventListener("keydown", (e) => {
+    undergroundKeys.add(e.key.toLowerCase());
+    if (
+      undergroundKeys.has("u") &&
+      undergroundKeys.has("n") &&
+      undergroundKeys.has("d")
+    ) {
+      undergroundKeys.clear();
+      activateUndergroundMode();
+    }
+  });
+
+  document.addEventListener("keyup", (e) => {
+    undergroundKeys.delete(e.key.toLowerCase());
+  });
 });
-
-/* Underground Mode — U + N + D */
-const undergroundKeys = new Set();
-
-function activateUndergroundMode() {
-  document.body.classList.add("underground-mode");
-  setTimeout(() => document.body.classList.remove("underground-mode"), 8000);
-}
-
-document.addEventListener("keydown", (e) => {
-  undergroundKeys.add(e.key.toLowerCase());
-  if (
-    undergroundKeys.has("u") &&
-    undergroundKeys.has("n") &&
-    undergroundKeys.has("d")
-  ) {
-    undergroundKeys.clear();
-    activateUndergroundMode();
-  }
-});
-
-document.addEventListener("keyup", (e) => {
-  undergroundKeys.delete(e.key.toLowerCase());
-});
-wickedEmblem.style.transform = "translateX(-50%) scale(1.05)";
-setTimeout(() => {
-  wickedEmblem.style.transform = "translateX(-50%) scale(1)";
-}, 300);
-comicCar.style.opacity = "0";
-setTimeout(() => {
-  comicCar.style.opacity = "1";
-}, 200);
