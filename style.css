@@ -2373,3 +2373,40 @@ header {
     color: rgba(255,255,255,0.85);
   }
 }
+.team-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.team-photo {
+  width: 220px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50% / 60%; /* vertical oval */
+  border: 2px solid #c00; /* subtle red accent */
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.team-info {
+  flex: 1;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .team-member {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .team-photo {
+    width: 180px;
+    height: 230px;
+  }
+}
