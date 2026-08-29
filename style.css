@@ -491,47 +491,73 @@ h2::after {
 }
 
 /* --------------------------------------------------
-   CONTACT FORM
+   BOOKING FORM UPGRADE
 -------------------------------------------------- */
+
 .contact-form {
-  max-width: 480px;
-  margin: 0 auto 2rem;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  padding: 2rem;
+  background: radial-gradient(circle at top, #202030 0%, #050505 70%);
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
-.form-group {
-  margin-bottom: 1rem;
+.contact-form .form-group {
+  margin-bottom: 1.2rem;
 }
 
-.form-group label {
+.contact-form label {
   display: block;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
   font-size: 0.9rem;
+  color: var(--fg-muted);
 }
 
-.form-group input,
-.form-group textarea {
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
   width: 100%;
-  padding: 0.6rem 0.7rem;
-  border-radius: 8px;
+  padding: 0.7rem 0.8rem;
+  border-radius: 10px;
   border: 1px solid var(--border);
-  font-size: 0.95rem;
   background: #050505;
   color: var(--fg);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
   outline: none;
   border-color: var(--red-light);
-  box-shadow: 0 0 8px rgba(233,74,87,0.7);
+  box-shadow: 0 0 10px rgba(233,74,87,0.7);
 }
 
-.contact-info {
-  max-width: 480px;
-  margin: 0 auto;
-  border-top: 1px solid var(--border);
-  padding-top: 1.5rem;
-  color: var(--fg-muted);
+.contact-form button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.9rem;
+  font-size: 1rem;
+  border-radius: 999px;
+}
+/* Add‑Ons Dropdown */
+#addons {
+  background: #050505;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#addons:focus {
+  outline: none;
+  border-color: var(--red-light);
+  box-shadow: 0 0 10px rgba(233,74,87,0.7);
 }
 
 /* --------------------------------------------------
@@ -992,5 +1018,1358 @@ header {
   0%, 100% { filter: brightness(1); }
   50% { filter: brightness(1.4); }
 }
+/* --------------------------------------------------
+   SERVICES PAGE — PRICING SECTION
+-------------------------------------------------- */
+
+.pricing-section {
+  padding: 2.5rem 1.5rem 3rem;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pricing-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 12px rgba(233,74,87,0.8);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.price-card {
+  background: radial-gradient(circle at top, #202030 0%, #050505 70%);
+  border-radius: 14px 16px 12px 18px;
+  border: 2px solid #00000060;
+  outline: 2px solid #00000040;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.9);
+  border-color: var(--red-light);
+}
+
+.price-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.price-card .price {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--red-light);
+  text-shadow: 0 0 8px rgba(233,74,87,0.7);
+}
+
+.price-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.price-card ul li {
+  margin: 6px 0;
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+}
+
+/* Add-ons section */
+.addons {
+  margin-top: 3rem;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addons h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.addons ul {
+  list-style: none;
+  padding: 0;
+}
+
+.addons ul li {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: var(--fg-muted);
+}
+/* --------------------------------------------------
+   POLISHED ADD-ONS SECTION
+-------------------------------------------------- */
+
+.addons {
+  margin-top: 3rem;
+  padding: 2rem 1.5rem;
+  background: radial-gradient(circle at top, #202030 0%, #050505 70%);
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.06);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addons h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  color: var(--red-light);
+  text-shadow: 0 0 10px rgba(233,74,87,0.7);
+}
+
+.addons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.addons ul li {
+  background: rgba(255,255,255,0.05);
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: var(--fg-muted);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.addons ul li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 12px rgba(233,74,87,0.4);
+  border-color: var(--red-light);
+  color: #fff;
+}
+/* --------------------------------------------------
+   SERVICE AREA SECTION
+-------------------------------------------------- */
+
+.service-area-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  text-align: center;
+}
+
+.service-area-tagline {
+  color: var(--fg-muted);
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.service-area-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-area-list {
+  background: radial-gradient(circle at top, #202030 0%, #050505 70%);
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255,255,255,0.06);
+  text-align: left;
+}
+
+.service-area-list h3 {
+  color: var(--red-light);
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 10px rgba(233,74,87,0.7);
+}
+
+.service-area-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.service-area-list ul li {
+  margin: 0.4rem 0;
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+}
+
+.service-area-map {
+  background: radial-gradient(circle at top, #202030 0%, #050505 70%);
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.service-area-map h3 {
+  color: var(--red-light);
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 10px rgba(233,74,87,0.7);
+}
+/* --------------------------------------------------
+   SERVICE AREA — POLISH UPGRADES
+-------------------------------------------------- */
+
+/* Glowing divider above the section */
+.service-area-section::before {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 2px;
+  margin: 0 auto 2rem;
+  background: linear-gradient(to right, transparent, var(--red-light), transparent);
+  opacity: 0.45;
+  border-radius: 999px;
+}
+
+/* Subtle underground background accent */
+.service-area-section {
+  position: relative;
+}
+
+.service-area-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(233,74,87,0.08) 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 0, transparent 45%);
+  opacity: 0.25;
+  z-index: -1;
+}
+/* --------------------------------------------------
+   SERVICE AREA — ICONS
+-------------------------------------------------- */
+
+/* Base icon style */
+.service-area-list::before,
+.service-area-map::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--red-light), var(--red-dark));
+  box-shadow: 0 0 12px rgba(233,74,87,0.7);
+  opacity: 0.85;
+  animation: pulseIcon 2.4s infinite ease-in-out;
+}
+
+/* Positioning fix */
+.service-area-list,
+.service-area-map {
+  position: relative;
+}
+
+/* Different icons for each card */
+.service-area-list:nth-child(1)::before {
+  background-image: url('images/icon-city.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.service-area-list:nth-child(2)::before {
+  background-image: url('images/icon-county.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.service-area-map::before {
+  background-image: url('images/icon-map.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Soft pulsing animation */
+@keyframes pulseIcon {
+  0% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.85; }
+}
+/* --------------------------------------------------
+   HOME PAGE — MOBILE OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* HERO SPACING FIX */
+  .hero {
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  /* BUTTON STACKING FIX */
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .hero-buttons a,
+  .hero-buttons button {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* LOGO ALIGNMENT FIX */
+  .logo {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    margin-right: auto;
+  }
+
+  /* NAV TOGGLE FIX */
+  .nav-toggle {
+    font-size: 1.6rem;
+    padding: 0.2rem;
+  }
+
+  /* HERO ILLUSTRATION FIX */
+  .main-logo {
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* WICKED SHINE PANEL FIX */
+  .wicked-panel {
+    width: 85%;
+    right: -85%;
+  }
+
+  .wicked-panel.open {
+    right: 0;
+  }
+
+  /* DIAMOND RAIN FIX */
+  .diamond-rain-container {
+    overflow: hidden;
+  }
+
+  .diamond-wrapper {
+    transform: scale(0.75);
+  }
+
+  /* SPLIT SECTION FIX */
+  .split-section {
+    padding: 1.8rem 1rem;
+    gap: 1.2rem;
+  }
+
+  /* CARDS SECTION FIX */
+  .cards-grid {
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.2rem;
+  }
+
+  /* FOOTER FIX */
+  .site-footer {
+    padding: 1.5rem 1rem;
+  }
+}
+/* --------------------------------------------------
+   CONTACT PAGE — MOBILE OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* HERO SPACING FIX */
+  .page-hero {
+    padding: 2rem 1rem 1.2rem;
+  }
+
+  .page-hero h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .page-hero p {
+    font-size: 0.95rem;
+  }
+
+  /* SERVICE AREA FIX */
+  .service-area-section {
+    padding: 2rem 1rem;
+  }
+
+  .service-area-grid {
+    gap: 1rem;
+  }
+
+  .service-area-list,
+  .service-area-map {
+    padding: 1.2rem;
+  }
+
+  .service-area-map iframe {
+    height: 200px;
+  }
+
+  /* CONTACT FORM FIX */
+  .contact-form {
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .contact-form label {
+    font-size: 0.85rem;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  /* SUBMIT BUTTON FIX */
+  .contact-form button {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1rem;
+  }
+
+  /* CONTACT INFO FIX */
+  .contact-info {
+    margin-top: 2rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .contact-info h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .contact-info p {
+    font-size: 0.9rem;
+  }
+
+  /* FOOTER FIX */
+  .site-footer {
+    padding: 1.5rem 1rem;
+  }
+}
+/* --------------------------------------------------
+   FAM PAGE — MOBILE OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* HERO SPACING FIX */
+  .page-hero {
+    padding: 2rem 1rem 1.2rem;
+  }
+
+  .page-hero h1 {
+    font-size: 1.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .page-hero p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  /* CONFETTI FIX */
+  .confetti-layer {
+    overflow: hidden;
+    transform: scale(0.85);
+  }
+
+  /* CONTENT SECTION FIX */
+  .content-section {
+    padding: 1.8rem 1rem;
+    text-align: center;
+  }
+
+  .content-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .content-section p {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  /* LOGO ALIGNMENT FIX */
+  .logo {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    margin-right: auto;
+  }
+
+  /* NAV TOGGLE FIX */
+  .nav-toggle {
+    font-size: 1.6rem;
+    padding: 0.2rem;
+  }
+
+  /* FOOTER FIX */
+  .site-footer {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+}
+/* --------------------------------------------------
+   GALLERY PAGE — MOBILE OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* HERO FIX */
+  .page-hero {
+    padding: 2rem 1rem 1.2rem;
+  }
+
+  .page-hero h1 {
+    font-size: 1.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .page-hero p {
+    font-size: 0.95rem;
+  }
+
+  /* GALLERY GRID FIX */
+  .gallery-grid {
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .gallery-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .gallery-placeholder {
+    height: 160px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* LOGO ALIGNMENT FIX */
+  .logo {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    margin-right: auto;
+  }
+
+  /* NAV TOGGLE FIX */
+  .nav-toggle {
+    font-size: 1.6rem;
+    padding: 0.2rem;
+  }
+
+  /* FOOTER FIX */
+  .site-footer {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+}
+/* --------------------------------------------------
+   PRIVACY POLICY PAGE — MOBILE OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* CONTENT SECTION FIX */
+  .content-section {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .content-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .content-section p {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* LOGO ALIGNMENT FIX */
+  .logo {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    margin-right: auto;
+  }
+
+  /* NAV TOGGLE FIX */
+  .nav-toggle {
+    font-size: 1.6rem;
+    padding: 0.2rem;
+  }
+
+  /* FOOTER FIX */
+  .site-footer {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+}
+/* --------------------------------------------------
+   SERVICES PAGE — MOBILE OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* HERO FIX */
+  .page-hero {
+    padding: 2rem 1rem 1.2rem;
+  }
+
+  .page-hero h1 {
+    font-size: 1.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .page-hero p {
+    font-size: 0.95rem;
+  }
+
+  /* PRICING SECTION FIX */
+  .pricing-section {
+    padding: 2rem 1rem;
+  }
+
+  .pricing-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .price-card {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+
+  .price-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .price-card .price {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .price-card ul li {
+    font-size: 0.9rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .price-card a {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.8rem;
+  }
+
+  /* ADD-ONS FIX */
+  .addons {
+    margin-top: 2rem;
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .addons h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .addons ul li {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  /* CUSTOM REQUEST FIX */
+  .content-section.center {
+    padding: 1.8rem 1rem;
+    text-align: center;
+  }
+
+  .content-section.center p {
+    font-size: 0.95rem;
+  }
+
+  /* LOGO ALIGNMENT FIX */
+  .logo {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    margin-right: auto;
+  }
+
+  /* NAV TOGGLE FIX */
+  .nav-toggle {
+    font-size: 1.6rem;
+    padding: 0.2rem;
+  }
+
+  /* FOOTER FIX */
+  .site-footer {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+}
+/* --------------------------------------------------
+   REQUEST SENT PAGE — MOBILE OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* HERO FIX */
+  .page-hero {
+    padding: 2rem 1rem 1.2rem;
+    text-align: center;
+  }
+
+  .page-hero h1 {
+    font-size: 1.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .page-hero p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  /* CONFETTI FIX */
+  .confetti-layer {
+    overflow: hidden;
+    transform: scale(0.85);
+  }
+
+  /* RETURN BUTTON FIX */
+  .content-section.center {
+    padding: 1.8rem 1rem;
+  }
+
+  .content-section.center a {
+    width: 100%;
+    text-align: center;
+    padding: 0.85rem;
+    font-size: 1rem;
+    display: inline-block;
+  }
+
+  /* LOGO ALIGNMENT FIX */
+  .logo {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    margin-right: auto;
+  }
+
+  /* FOOTER FIX */
+  .site-footer {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+}
+/* --------------------------------------------------
+   ABOUT PAGE — MOBILE OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* HERO FIX */
+  .page-hero {
+    padding: 2rem 1rem 1.2rem;
+    text-align: center;
+  }
+
+  .page-hero h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .page-hero p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  /* CONFETTI FIX */
+  .confetti-layer {
+    overflow: hidden;
+    transform: scale(0.85);
+  }
+
+  /* BACKGROUND ACCENT FIX */
+  .about-accent {
+    transform: scale(0.75);
+    opacity: 0.25;
+  }
+
+  /* SECTION DIVIDER FIX */
+  .section-divider {
+    margin: 1.5rem auto;
+    height: 2px;
+    width: 70%;
+  }
+
+  /* CONTENT SECTION FIX */
+  .content-section {
+    padding: 1.8rem 1rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+    text-align: center;
+  }
+
+  .content-section p {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  /* CENTERED SECTIONS FIX */
+  .content-section.center {
+    text-align: center;
+  }
+
+  /* BULLET LIST FIX */
+  .bullet-list {
+    padding-left: 1rem;
+  }
+
+  .bullet-list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+
+  /* TIMELINE FIX */
+  .bullet-list li strong {
+    font-size: 1rem;
+  }
+
+  /* LOGO ALIGNMENT FIX */
+  .logo {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    margin-right: auto;
+  }
+
+  /* NAV TOGGLE FIX */
+  .nav-toggle {
+    font-size: 1.6rem;
+    padding: 0.2rem;
+  }
+
+  /* FOOTER FIX */
+  .site-footer {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+}
+/* --------------------------------------------------
+   MOBILE ANIMATION OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* Reduce fade-in duration */
+  .fade-in {
+    animation-duration: 0.6s;
+    animation-timing-function: ease-out;
+  }
+
+  /* Confetti optimization */
+  .confetti-layer,
+  .confetti-soft {
+    transform: scale(0.75);
+    opacity: 0.7;
+    overflow: hidden;
+  }
+
+  /* Diamond Rain optimization */
+  .diamond-wrapper {
+    transform: scale(0.65);
+    opacity: 0.85;
+  }
+
+  /* Reduce diamond fall speed */
+  @keyframes diamondFall {
+    0% { transform: translateY(-10vh); }
+    100% { transform: translateY(85vh); }
+  }
+
+  /* Wicked emblem pulse optimization */
+  .wicked-emblem {
+    animation-duration: 1.8s;
+    animation-timing-function: ease-in-out;
+    opacity: 0.85;
+  }
+
+  /* Glow reduction */
+  .btn-glow,
+  .btn-glow-soft {
+    box-shadow: 0 0 12px rgba(233,74,87,0.5);
+  }
+
+  /* Disable heavy hover animations on mobile */
+  .card-neon:hover,
+  .price-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Comic car float optimization */
+  .main-logo {
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+  }
+
+  /* Section divider glow reduction */
+  .section-divider {
+    opacity: 0.4;
+  }
+
+  /* Background accent optimization */
+  .about-accent {
+    transform: scale(0.7);
+    opacity: 0.2;
+  }
+}
+/* --------------------------------------------------
+   CONFETTI — MOBILE REFINEMENT
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .confetti-layer,
+  .confetti-soft {
+    transform: scale(0.7);
+    opacity: 0.65;
+    overflow: hidden;
+  }
+
+  /* Faster fade */
+  .confetti-piece {
+    animation-duration: 1.2s !important;
+  }
+}
+/* --------------------------------------------------
+   DIAMOND RAIN — MOBILE REFINEMENT
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .diamond-rain-container {
+    overflow: hidden;
+    transform: scale(0.7);
+  }
+
+  .diamond-wrapper {
+    opacity: 0.75;
+    transform: scale(0.6);
+  }
+
+  /* Faster, smoother fall */
+  @keyframes diamondFall {
+    0% { transform: translateY(-8vh); }
+    100% { transform: translateY(70vh); }
+  }
+}
+/* --------------------------------------------------
+   WICKED SHINE PANEL — MOBILE REFINEMENT
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .wicked-panel {
+    width: 85%;
+    right: -85%;
+    transition: right 0.35s ease-out;
+    box-shadow: 0 0 18px rgba(233,74,87,0.35);
+  }
+
+  .wicked-panel.open {
+    right: 0;
+  }
+
+  .wicked-overlay {
+    transition: opacity 0.25s ease-out;
+  }
+}
+/* --------------------------------------------------
+   BUTTON GLOW — MOBILE REFINEMENT
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .btn-glow,
+  .btn-glow-soft {
+    box-shadow: 0 0 12px rgba(233,74,87,0.45);
+    animation-duration: 1.4s;
+  }
+
+  /* Disable hover zoom */
+  .btn-primary:hover,
+  .btn-outline:hover {
+    transform: none;
+  }
+}
+/* --------------------------------------------------
+   MOBILE LOAD SPEED OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* Reduce heavy shadows */
+  .card-neon,
+  .price-card,
+  .service-area-list,
+  .service-area-map {
+    box-shadow: 0 0 12px rgba(0,0,0,0.35);
+  }
+
+  /* Reduce transitions */
+  * {
+    transition-duration: 0.25s;
+  }
+
+  /* Disable slow hover transitions */
+  a:hover,
+  button:hover {
+    transform: none;
+  }
+
+  /* Reduce glow intensity */
+  .btn-glow,
+  .btn-glow-soft {
+    box-shadow: 0 0 10px rgba(233,74,87,0.45);
+  }
+
+  /* Reduce background accent intensity */
+  .about-accent {
+    opacity: 0.2;
+  }
+}
+/* --------------------------------------------------
+   MOBILE IMAGE OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* Main logo scaling */
+  .main-logo {
+    width: 70%;
+    height: auto;
+  }
+
+  /* Gallery placeholders / images */
+  .gallery-placeholder,
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  /* Reduce oversized images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent layout shifts */
+  img {
+    content-visibility: auto;
+  }
+}
+/* --------------------------------------------------
+   MOBILE NAV ANIMATION OPTIMIZATION
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* Faster nav toggle animation */
+  .nav-links {
+    transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
+  }
+
+  /* Reduce nav spacing */
+  .nav-links li {
+    padding: 0.4rem 0;
+  }
+
+  /* Reduce nav glow */
+  .nav-links a {
+    text-shadow: none;
+  }
+
+  /* Nav toggle button refinement */
+  .nav-toggle {
+    font-size: 1.6rem;
+    padding: 0.2rem;
+    transition: transform 0.15s ease-out;
+  }
+
+  /* Disable heavy hover animation */
+  .nav-toggle:hover {
+    transform: none;
+  }
+}
+/* --------------------------------------------------
+   FINAL MOBILE OPTIMIZATION PACK
+   Typography • Spacing • Buttons
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* ------------------------------
+     TYPOGRAPHY OPTIMIZATION
+  ------------------------------ */
+
+  h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    line-height: 1.25;
+  }
+
+  p, li {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  strong {
+    font-size: 1rem;
+  }
+
+  /* Prevent text overflow */
+  * {
+    word-wrap: break-word;
+  }
 
 
+  /* ------------------------------
+     SPACING OPTIMIZATION
+  ------------------------------ */
+
+  /* Global section spacing */
+  section {
+    padding: 1.8rem 1rem;
+  }
+
+  /* Reduce divider spacing */
+  .section-divider {
+    margin: 1.4rem auto;
+    height: 2px;
+    width: 70%;
+  }
+
+  /* Reduce spacing between stacked content */
+  .content-section p + p {
+    margin-top: 0.8rem;
+  }
+
+  /* Bullet list spacing */
+  .bullet-list li {
+    margin-bottom: 0.4rem;
+  }
+
+  /* Hero spacing */
+  .page-hero {
+    padding: 2rem 1rem 1.2rem;
+  }
+
+  /* Footer spacing */
+  .site-footer {
+    padding: 1.5rem 1rem;
+  }
+
+
+  /* ------------------------------
+     BUTTON OPTIMIZATION
+  ------------------------------ */
+
+  .btn-primary,
+  .btn-outline,
+  .btn-glow,
+  .btn-glow-soft {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  /* Reduce glow intensity */
+  .btn-glow,
+  .btn-glow-soft {
+    box-shadow: 0 0 12px rgba(233,74,87,0.45);
+  }
+
+  /* Disable hover zoom on mobile */
+  .btn-primary:hover,
+  .btn-outline:hover {
+    transform: none;
+  }
+
+  /* Improve tap responsiveness */
+  button,
+  a.btn-primary,
+  a.btn-outline {
+    transition: background-color 0.2s ease-out,
+                box-shadow 0.2s ease-out;
+  }
+}
+/* --------------------------------------------------
+   FINAL POLISH PACK — MOBILE
+   Micro‑Interactions • Smooth Scroll • Dark‑Mode Contrast
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* ------------------------------
+     ULTRA‑SMOOTH SCROLL BEHAVIOR
+  ------------------------------ */
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Reduce scroll jank on long pages */
+  body {
+    overscroll-behavior: contain;
+  }
+
+
+  /* ------------------------------
+     MICRO‑INTERACTIONS POLISH
+  ------------------------------ */
+
+  /* Soft tap feedback */
+  a,
+  button {
+    transition: background-color 0.15s ease-out,
+                opacity 0.15s ease-out;
+  }
+
+  a:active,
+  button:active {
+    opacity: 0.85;
+  }
+
+  /* Section fade-in smoothing */
+  .fade-in {
+    animation-duration: 0.55s;
+    animation-timing-function: ease-out;
+  }
+
+  /* Divider micro‑interaction */
+  .section-divider {
+    transition: opacity 0.25s ease-out;
+  }
+
+  .section-divider:active {
+    opacity: 0.3;
+  }
+
+
+  /* ------------------------------
+     DARK‑MODE CONTRAST TUNING
+  ------------------------------ */
+
+  /* Improve readability */
+  p,
+  li,
+  h1,
+  h2,
+  h3 {
+    color: rgba(255,255,255,0.92);
+  }
+
+  /* Reduce harsh blacks */
+  body.theme-dark {
+    background-color: #0d0d0f;
+  }
+
+  /* Softer card backgrounds */
+  .card,
+  .price-card,
+  .service-area-list,
+  .service-area-map,
+  .content-section {
+    background-color: rgba(20,20,25,0.65);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Improve button contrast */
+  .btn-primary {
+    background-color: #e94a57;
+    color: #fff;
+  }
+
+  .btn-outline {
+    border-color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* Improve link visibility */
+  a {
+    color: #ff6f7d;
+  }
+
+  /* Footer contrast */
+  .site-footer {
+    color: rgba(255,255,255,0.85);
+  }
+}
