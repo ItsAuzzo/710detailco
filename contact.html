@@ -15,14 +15,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<!-- EMAILJS SDK (correct CDN) -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("BTXqARj__mqXvQ9BL"); 
-  })();
-</script>
-
 <body class="theme-dark">
 
   <!-- Header -->
@@ -207,24 +199,27 @@
 
   <script src="script.js"></script>
 
-  <!-- EMAILJS SCRIPT (only one block now, no conflicts) -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script>
-    emailjs.init("BTXqARj__mqXvQ9BL");
+<!-- EMAILJS SCRIPT -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("BTXqARj__mqXvQ9BL");
+</script>
 
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-      event.preventDefault();
+<!-- EMAILJS SEND SCRIPT -->
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-      emailjs.sendForm('service_mo4bcy8', 'template_mk6uopy', this)
-        .then(() => {
-          alert('Message sent successfully!');
-        })
-        .catch((error) => {
-          console.error('EmailJS Error:', error);
-          alert('Failed to send message. Please try again.');
-        });
-    });
-  </script>
+    emailjs.sendForm('service_mo4bcy8', 'template_mk6uopy', this)
+      .then(() => {
+        alert('Message sent successfully!');
+      })
+      .catch((error) => {
+        console.error('EmailJS Error:', error);
+        alert('Failed to send message. Please try again.');
+      });
+  });
+</script>
 
 </body>
 </html>
