@@ -1,0 +1,854 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+/* --------------------------------------------------
+   ROOT THEME VARIABLES
+-------------------------------------------------- */
+:root {
+  --bg: #050505;
+  --bg-alt: #101018;
+  --fg: #f5f5f5;
+  --fg-muted: #b3b3b3;
+
+  --red: #d6001c;
+  --red-light: #e94a57;
+  --red-dark: #8b0e17;
+
+  --faygo-orange: #ff7a1a;
+  --faygo-grape: #6b2bbf;
+
+  --border: #2a2a35;
+  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --------------------------------------------------
+   GLOBAL
+-------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body.theme-dark {
+  margin: 0;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: radial-gradient(circle at top, #202030 0%, #050505 55%, #000 100%);
+  color: var(--fg);
+}
+
+/* --------------------------------------------------
+   HEADER / NAV
+-------------------------------------------------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid #000;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(to right, #050505, #101018);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+  color: var(--fg);
+}
+
+/* Gloss sweep */
+.logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
+  transform: skewX(-20deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { left: -120%; }
+  50% { left: 120%; }
+  100% { left: 120%; }
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.nav-links a.active {
+  color: var(--red-light);
+  text-shadow: 0 0 8px rgba(233,74,87,0.8);
+}
+
+.nav-links a:hover {
+  color: var(--fg);
+  text-shadow: 0 0 6px rgba(255,255,255,0.7);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--fg);
+}
+
+/* --------------------------------------------------
+   HERO SECTION
+-------------------------------------------------- */
+.hero {
+  padding: 3rem 1.5rem;
+  position: relative;
+}
+
+.hero-comic {
+  background:
+    radial-gradient(circle at top left, #202030 0%, transparent 50%),
+    radial-gradient(circle at bottom right, #101018 0%, transparent 55%),
+    linear-gradient(to bottom, #050505 0%, #000 100%);
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-content h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  color: var(--fg-muted);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+.btn-primary,
+.btn-outline {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--red), var(--red-light));
+  color: #fff;
+}
+
+.btn-outline {
+  border-color: var(--red-light);
+  color: var(--red-light);
+  background: transparent;
+}
+
+.btn-glow {
+  box-shadow: 0 0 12px rgba(233,74,87,0.9);
+}
+
+.btn-glow-soft {
+  box-shadow: 0 0 8px rgba(233,74,87,0.6);
+}
+
+.btn-primary:hover,
+.btn-outline:hover {
+  transform: translateY(-2px);
+}
+
+/* Wicked Shine button */
+.btn-wicked {
+  background: linear-gradient(135deg, var(--faygo-orange), var(--faygo-grape));
+  color: #fff;
+  box-shadow: 0 0 12px rgba(255, 120, 30, 0.7);
+}
+
+/* Fam Discount button */
+.fam-btn {
+  background: var(--red);
+  color: #fff;
+}
+
+/* --------------------------------------------------
+   COMIC CAR ILLUSTRATION
+-------------------------------------------------- */
+.hero-illustration {
+  position: relative;
+  min-height: 220px;
+}
+
+.comic-car {
+  position: relative;
+  width: 260px;
+  height: 140px;
+  margin: 0 auto;
+  transform: skewX(-4deg);
+}
+
+.car-body {
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  width: 240px;
+  height: 60px;
+  background: linear-gradient(135deg, #2b2b35, #3b3b45);
+  border-radius: 18px 28px 12px 24px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+}
+
+.car-window {
+  position: absolute;
+  bottom: 60px;
+  left: 40px;
+  width: 140px;
+  height: 35px;
+  background: linear-gradient(135deg, #4f5f7f, #9fb3d9);
+  border-radius: 16px 20px 10px 10px;
+}
+
+.car-wheel {
+  position: absolute;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+  background: #111;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.9);
+}
+
+.car-wheel-left { left: 35px; }
+.car-wheel-right { right: 35px; }
+
+.washer-character {
+  position: absolute;
+  right: -40px;
+  bottom: 60px;
+}
+
+.char-head {
+  width: 26px;
+  height: 26px;
+  background: #f5f5f5;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+.char-body {
+  width: 18px;
+  height: 40px;
+  background: var(--red);
+  border-radius: 10px;
+  margin: 2px auto 0;
+}
+
+.char-arm {
+  width: 32px;
+  height: 6px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  position: relative;
+  left: 10px;
+  top: -6px;
+}
+
+.char-wand {
+  width: 40px;
+  height: 4px;
+  background: #999;
+  border-radius: 4px;
+  position: relative;
+  left: 30px;
+  top: -10px;
+}
+
+.spray-arc {
+  position: absolute;
+  width: 80px;
+  height: 40px;
+  border-top: 2px solid rgba(180,220,255,0.8);
+  border-radius: 80px 80px 0 0;
+  left: 60px;
+  top: -10px;
+  box-shadow: 0 0 12px rgba(180,220,255,0.7);
+}
+
+/* --------------------------------------------------
+   CONFETTI LAYER
+-------------------------------------------------- */
+.confetti-layer {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(193,18,31,0.4) 0, transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(233,74,87,0.35) 0, transparent 45%),
+    radial-gradient(circle at 30% 80%, rgba(255,255,255,0.25) 0, transparent 40%);
+  opacity: 0.25;
+}
+
+.confetti-soft {
+  opacity: 0.18;
+}
+
+/* --------------------------------------------------
+   PAGE HERO
+-------------------------------------------------- */
+.page-hero {
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.page-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-hero p {
+  color: var(--fg-muted);
+}
+
+/* Accent line under h2 */
+h2 {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--red-light);
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(233,74,87,0.7);
+}
+
+/* --------------------------------------------------
+   SPLIT SECTION
+-------------------------------------------------- */
+.split-section {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+  gap: 2rem;
+  padding: 2.5rem 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.split-text p {
+  color: var(--fg-muted);
+}
+
+.split-highlight {
+  background: radial-gradient(circle at top left, #202030 0%, #101018 60%);
+  border-radius: 12px 16px 10px 18px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+}
+
+/* --------------------------------------------------
+   CARDS
+-------------------------------------------------- */
+.cards-section {
+  padding: 2.5rem 1.5rem 3rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.cards-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  border-radius: 14px 16px 12px 18px;
+  border: 2px solid #00000060;
+  outline: 2px solid #00000040;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  background: radial-gradient(circle at top, #202030 0%, #050505 70%);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-neon:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.9);
+  border-color: var(--red-light);
+}
+
+.card p {
+  color: var(--fg-muted);
+}
+
+.price {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--red-light);
+}
+
+/* --------------------------------------------------
+   CONTENT SECTIONS
+-------------------------------------------------- */
+.content-section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.content-section.center {
+  text-align: center;
+}
+
+.bullet-list {
+  padding-left: 1.2rem;
+  color: var(--fg-muted);
+}
+
+/* --------------------------------------------------
+   GALLERY
+-------------------------------------------------- */
+.gallery-grid {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+  background: radial-gradient(circle at top, #202030 0%, #050505 70%);
+}
+
+.gallery-label {
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  color: var(--red-light);
+}
+
+.gallery-placeholder {
+  border-radius: 8px;
+  border: 1px dashed #555;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+
+/* --------------------------------------------------
+   CONTACT FORM
+-------------------------------------------------- */
+.contact-form {
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  background: #050505;
+  color: var(--fg);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--red-light);
+  box-shadow: 0 0 8px rgba(233,74,87,0.7);
+}
+
+.contact-info {
+  max-width: 480px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  color: var(--fg-muted);
+}
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid #000;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  background: linear-gradient(to right, #050505, #101018);
+  letter-spacing: 0.03em;
+}
+
+/* --------------------------------------------------
+   EASTER EGG
+-------------------------------------------------- */
+.easter-egg {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--red);
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  box-shadow: 0 0 12px rgba(193,18,31,0.9);
+}
+
+/* --------------------------------------------------
+   FADE-IN ANIMATION
+-------------------------------------------------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------
+   MOBILE
+-------------------------------------------------- */
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-illustration {
+    margin-top: 1.5rem;
+  }
+
+  .split-section {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 2.8rem;
+    right: 0;
+    background: #050505;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    border: 1px solid #000;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.9);
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+/* --------------------------------------------------
+   EASTER EGGS — ADDITIONS
+-------------------------------------------------- */
+
+/* Faygo splash effect */
+.btn-wicked.faygo-splash::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,122,26,0.7) 0, transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(107,43,191,0.7) 0, transparent 45%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Graffiti hover tags */
+.tagged-word {
+  position: relative;
+  display: inline-block;
+}
+
+.tagged-word::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.15em;
+  height: 0.18em;
+  background: linear-gradient(135deg, var(--red-light), var(--red-dark));
+  border-radius: 999px;
+  transform: scaleX(0.2) skewX(-20deg);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.tagged-word:hover::after {
+  transform: scaleX(1) skewX(-20deg);
+  opacity: 1;
+}
+
+/* Konami mode */
+body.konami-mode {
+  background: radial-gradient(circle at center, #3b000f 0%, #050505 40%, #000 100%);
+}
+
+.wicked-badge {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(214,0,28,0.8);
+  z-index: 20;
+}
+
+/* Carnival mode */
+body.carnival-mode {
+  background: radial-gradient(circle at top, #4a0018 0%, #050505 50%, #000 100%);
+}
+
+/* Underground mode */
+body.underground-mode {
+  background: radial-gradient(circle at top, #200000 0%, #050505 60%, #000 100%);
+}
+
+/* Wisdom tip popup */
+.wisdom-tip {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(5,5,5,0.95);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  box-shadow: 0 0 12px rgba(0,0,0,0.8);
+  z-index: 20;
+}
+/* --------------------------------------------------
+   WICKED SHINE — COMIC NEON EMBLEM
+-------------------------------------------------- */
+
+.wicked-emblem {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(255,0,60,0.9) 0%, rgba(80,0,20,0.9) 60%, rgba(0,0,0,0.8) 100%);
+  box-shadow:
+    0 0 25px rgba(255,0,60,0.9),
+    0 0 45px rgba(255,0,60,0.7),
+    inset 0 0 25px rgba(255,255,255,0.2);
+  z-index: 5;
+  animation: wickedPulse 2.2s infinite ease-in-out;
+}
+
+/* Neon spray arc */
+.wicked-emblem::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-10deg);
+  width: 180px;
+  height: 90px;
+  border-top: 4px solid rgba(255,120,255,0.9);
+  border-radius: 180px 180px 0 0;
+  box-shadow: 0 0 18px rgba(255,120,255,0.9);
+}
+
+/* Neon text */
+.wicked-emblem::after {
+  content: "DIAMOND RAIN";
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fff;
+  text-shadow:
+    0 0 8px rgba(255,0,60,1),
+    0 0 14px rgba(255,0,60,0.9),
+    0 0 22px rgba(255,0,60,0.7);
+}
+
+@keyframes wickedPulse {
+  0% { box-shadow: 0 0 25px rgba(255,0,60,0.9), 0 0 45px rgba(255,0,60,0.7); }
+  50% { box-shadow: 0 0 35px rgba(255,0,60,1), 0 0 65px rgba(255,0,60,0.9); }
+  100% { box-shadow: 0 0 25px rgba(255,0,60,0.9), 0 0 45px rgba(255,0,60,0.7); }
+}
+.hero-illustration {
+  position: relative;
+}
+.wicked-emblem {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+}
+/* --------------------------------------------------
+   WICKED SHINE PANEL (MISSING FROM YOUR CSS)
+-------------------------------------------------- */
+
+.wicked-panel {
+  position: fixed;
+  top: 0;
+  right: -350px; /* hidden off-screen */
+  width: 350px;
+  height: 100%;
+  background: #111;
+  color: #fff;
+  padding: 25px;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+  transition: right 0.4s ease;
+  z-index: 999;
+}
+
+.wicked-panel.open {
+  right: 0; /* slides in */
+}
+
+.wicked-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 998;
+}
+
+.wicked-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.nav-links a {
+  transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  transform: translateY(-2px);
+}
+body {
+  animation: fadeSite 0.6s ease;
+}
+
+@keyframes fadeSite {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.site-footer {
+  box-shadow: 0 -4px 18px rgba(0,0,0,0.6);
+}
+.card:hover {
+  border-color: var(--red-light);
+  box-shadow: 0 0 18px rgba(233,74,87,0.4);
+}
+.page-hero h1 {
+  text-shadow: 0 0 12px rgba(233,74,87,0.8);
+}
+.section-divider {
+  width: 80%;
+  height: 2px;
+  margin: 2rem auto;
+  background: linear-gradient(to right, transparent, var(--red-light), transparent);
+  opacity: 0.4;
+  border-radius: 999px;
+}
+
+.about-accent {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(233,74,87,0.08) 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 0, transparent 45%);
+  opacity: 0.25;
+}
+

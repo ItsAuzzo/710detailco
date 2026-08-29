@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://710detailco.com/sitemap.xml
