@@ -9,11 +9,19 @@
   <meta name="description" content="710 Detail Co. — Mobile detailing in Clinton, WI. Wicked clean results, honest pricing, and family-level loyalty. Book interior, exterior, and full detail packages.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/favicon.png.png">
+  <link rel="icon" type="image/png" href="images/favicon.png">
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
+
+<!-- EMAILJS SDK -->
+<script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("BTXqARj__mqXvQ9BL"); /* ← Replace this with your actual public key */
+  })();
+</script>
 
 <body class="theme-dark">
 
@@ -94,36 +102,37 @@
     <!-- Contact Form -->
     <section class="content-section fade-in">
 
-      <form class="contact-form" action="thankyou.html" method="GET">
+      <!-- EMAILJS FORM -->
+      <form id="contactForm" class="contact-form">
 
         <!-- Name -->
         <div class="form-group">
           <label for="name">Full Name*</label>
-          <input id="name" type="text" required>
+          <input id="name" name="user_name" type="text" required>
         </div>
 
         <!-- Email -->
         <div class="form-group">
           <label for="email">Email*</label>
-          <input id="email" type="email" required>
+          <input id="email" name="user_email" type="email" required>
         </div>
 
         <!-- Phone -->
         <div class="form-group">
           <label for="phone">Phone Number*</label>
-          <input id="phone" type="tel" required>
+          <input id="phone" name="user_phone" type="tel" required>
         </div>
 
         <!-- Vehicle -->
         <div class="form-group">
           <label for="vehicle">Vehicle (Year / Make / Model)*</label>
-          <input id="vehicle" type="text" required placeholder="2018 Honda Accord">
+          <input id="vehicle" name="user_vehicle" type="text" required placeholder="2018 Honda Accord">
         </div>
 
         <!-- Package Selection -->
         <div class="form-group">
           <label for="package">Select Package*</label>
-          <select id="package" required>
+          <select id="package" name="user_package" required>
             <option value="">Choose a package...</option>
             <option>Interior Refresh</option>
             <option>Deep Interior Detail</option>
@@ -138,7 +147,7 @@
         <!-- Add-ons -->
         <div class="form-group">
           <label for="addons">Add‑Ons (Optional)</label>
-          <select id="addons">
+          <select id="addons" name="user_addons">
             <option value="">Select add‑ons...</option>
             <option value="pet-hair">Pet Hair Removal — $20–$40</option>
             <option value="engine-bay">Engine Bay Cleaning — $40</option>
@@ -151,25 +160,25 @@
         <!-- Preferred Date -->
         <div class="form-group">
           <label for="date">Preferred Date*</label>
-          <input id="date" type="date" required>
+          <input id="date" name="user_date" type="date" required>
         </div>
 
         <!-- Preferred Time -->
         <div class="form-group">
           <label for="time">Preferred Time*</label>
-          <input id="time" type="time" required>
+          <input id="time" name="user_time" type="time" required>
         </div>
 
         <!-- Address -->
         <div class="form-group">
           <label for="address">Service Address*</label>
-          <input id="address" type="text" required placeholder="Street, City, State">
+          <input id="address" name="user_address" type="text" required placeholder="Street, City, State">
         </div>
 
         <!-- Notes -->
         <div class="form-group">
           <label for="details">Notes / Special Requests</label>
-          <textarea id="details" rows="5" placeholder="Tell us anything we should know..."></textarea>
+          <textarea id="details" name="user_details" rows="5" placeholder="Tell us anything we should know..."></textarea>
         </div>
 
         <!-- CTA -->
@@ -197,5 +206,21 @@
   <div class="easter-egg" id="easterEgg">Whoop Whoop!</div>
 
   <script src="script.js"></script>
+
+  <!-- EMAILJS SEND SCRIPT -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm('service_mo4bcy8', 'template_mk6uopy', this) /* ← Replace YOUR_TEMPLATE_ID */
+        .then(() => {
+          alert('Message sent successfully!');
+        }, (error) => {
+          alert('Failed to send message. Please try again.');
+          console.error('EmailJS Error:', error);
+        });
+    });
+  </script>
+
 </body>
 </html>
