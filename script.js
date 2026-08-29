@@ -344,3 +344,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 });
+// Before/After Slider Logic
+document.querySelectorAll('.ba-slider').forEach(slider => {
+  const range = slider.querySelector('.ba-range');
+  const afterImg = slider.querySelector('.after');
+
+  range.addEventListener('input', () => {
+    const val = range.value;
+    afterImg.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
+  });
+});

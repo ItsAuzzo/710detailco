@@ -174,7 +174,8 @@
         </div>
 
         <!-- CTA -->
-        <button type="submit" class="btn-primary btn-glow">Send Booking Request</button>
+        <button type="submit" class="btn-primary btn-glow submit-glow">Send Booking Request</button>
+        <p class="asap-note">We’ll get back to you ASAP.</p>
 
       </form>
 
@@ -212,7 +213,7 @@
 
     emailjs.sendForm('service_mo4bcy8', 'template_mk6uopy', this)
       .then(() => {
-        alert('Message sent successfully!');
+        window.location.href = "thankyou.html";
       })
       .catch((error) => {
         console.error('EmailJS Error:', error);

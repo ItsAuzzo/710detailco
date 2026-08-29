@@ -2410,3 +2410,183 @@ header {
     height: 230px;
   }
 }
+.team-photo {
+  width: 220px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50% / 60%;
+  border: 2px solid #c00;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* 🔥 Red Pulse Hover Effect */
+.team-photo:hover {
+  transform: translateY(-6px);
+  border-color: #ff1a1a;
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.55);
+  animation: redPulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes redPulse {
+  from {
+    box-shadow: 0 0 14px rgba(255, 0, 0, 0.45);
+    border-color: #c00;
+  }
+  to {
+    box-shadow: 0 0 22px rgba(255, 0, 0, 0.75);
+    border-color: #ff3333;
+  }
+}
+.main-logo {
+  animation: idleGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes idleGlow {
+  from {
+    filter: drop-shadow(0 0 2px rgba(255, 0, 0, 0.25));
+  }
+  to {
+    filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.45));
+  }
+}
+.main-logo:active {
+  transform: scale(0.96);
+  filter: drop-shadow(0 0 14px rgba(255, 0, 0, 0.75));
+}
+/* Base button shine setup */
+.btn-primary,
+.btn-outline,
+.btn-glow,
+.btn-glow-soft,
+.fam-btn,
+.btn-wicked {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine sweep overlay */
+.btn-primary::after,
+.btn-outline::after,
+.btn-glow::after,
+.btn-glow-soft::after,
+.fam-btn::after,
+.btn-wicked::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+/* Hover: trigger shine sweep */
+.btn-primary:hover::after,
+.btn-outline:hover::after,
+.btn-glow:hover::after,
+.btn-glow-soft:hover::after,
+.fam-btn:hover::after,
+.btn-wicked:hover::after {
+  left: 120%;
+}
+/* Base nav link styling */
+.nav-links a {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+/* Underline sweep */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #ff1a1a;
+  transition: width 0.25s ease;
+}
+
+/* Hover: red underline sweep */
+.nav-links a:hover {
+  color: #ff1a1a;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+/* WHY CHOOSE US */
+.why-choose-us {
+  text-align: center;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.why-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 0, 0, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine sweep on hover */
+.why-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.why-item:hover::after {
+  left: 120%;
+}
+
+.why-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.45);
+}
+/* Subtle glow on submit button */
+.submit-glow {
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.35);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.submit-glow:hover {
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.55);
+  transform: translateY(-4px);
+}
+
+/* ASAP reassurance line */
+.asap-note {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+  text-align: center;
+  font-style: italic;
+}
