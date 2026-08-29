@@ -15,11 +15,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<!-- EMAILJS SDK -->
-<script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
+<!-- EMAILJS SDK (correct CDN) -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
   (function(){
-    emailjs.init("BTXqARj__mqXvQ9BL"); /* ← Replace this with your actual public key */
+    emailjs.init("BTXqARj__mqXvQ9BL"); 
   })();
 </script>
 
@@ -212,7 +212,7 @@
     document.getElementById('contactForm').addEventListener('submit', function(event) {
       event.preventDefault();
 
-      emailjs.sendForm('service_mo4bcy8', 'template_mk6uopy', this) /* ← Replace YOUR_TEMPLATE_ID */
+      emailjs.sendForm('service_mo4bcy8', 'template_mk6uopy', this)
         .then(() => {
           alert('Message sent successfully!');
         }, (error) => {
