@@ -340,6 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("keyup", (e) => {
-    undergroundKeys.delete(e.key.toLowerCase());
-  });
+      undergroundKeys.delete(e.key.toLowerCase());
+});
+
 });
