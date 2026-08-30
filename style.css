@@ -2590,3 +2590,14 @@ header {
   text-align: center;
   font-style: italic;
 }
+section {
+  padding: 2rem 1rem;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
